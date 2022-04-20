@@ -8,6 +8,7 @@ namespace AlgoDatPraktikum
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("klappt, vkl");
+            Console.WriteLine("klappt wohl, Manu");
         }
     }
 }
