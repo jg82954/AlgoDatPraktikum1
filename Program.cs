@@ -1,4 +1,5 @@
 ﻿using System;
+using AlgoDatPraktikum;
 
 namespace AlgoDatPraktikum
 {
@@ -6,9 +7,8 @@ namespace AlgoDatPraktikum
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            Console.WriteLine("klappt, vkl");
-            Console.WriteLine("klappt wohl, nene");
+            AbstractClassSelectionHandler handler = new AbstractClassSelectionHandler();
+            handler.SelectionHandler();
         }
     }
 }
