@@ -50,7 +50,7 @@ namespace AlgoDatPraktikum
                 }
                 Console.Clear();
             }
-            Console.WriteLine("Man sieht sich ^^");
+            Console.WriteLine("Man sieht sich ^^ ");
         }
         
        
