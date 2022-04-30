@@ -4,10 +4,12 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
+    public enum ListPrintVersion { List,HashTab}
     public abstract class LinkedList:IDictionary
     {
-        protected ListItem first = null, last = null,pos=null;
-        protected int count;
+        public ListItem first = null, last = null,pos=null;
+        public int count { get;  set; }
+        public ListPrintVersion Vers { get; set; }
 
         public bool delete(int elem)
         {
@@ -71,14 +73,30 @@ namespace AlgoDatPraktikum
             }
             else
             {
-                for (ListItem item = first; item != null; item = item.next)
+                if (Vers==ListPrintVersion.List)
                 {
-                    Console.WriteLine(item.key);
+                    for (ListItem item = first; item != null; item = item.next)
+                    {
+                        Console.WriteLine(item.key);
+                    }
+                    Console.WriteLine("------");
+                    Console.WriteLine($"Anzahl an Elementen: {count}");
+                    Console.WriteLine("------");
+                }
+                else
+                {
+                    for (ListItem item = first; item != null; item = item.next)
+                    {
+                        if (item==first)
+                        {
+                            Console.Write(item.key);
+                        }
+                        else
+                            Console.Write($"-->{item.key}");
+                    }
                 }
             }
-            Console.WriteLine("------");
-            Console.WriteLine($"Anzahl an Elementen: {count}");
-            Console.WriteLine("------");
+            
         }
 
         public abstract bool search(int elem);

@@ -25,10 +25,16 @@ namespace AlgoDatPraktikum
                     inputhand.InputHandling(list);
                     break;
                 case 3:
-                    //hash1
+                    Console.Clear();
+                    Console.WriteLine("Sie haben HashTabQuadProb in SetUnsorted gewählt\n");
+                    HashTabQuadProb hashquad = new HashTabQuadProb();
+                    inputhand.InputHandling(hashquad);
                     break;
                 case 4:
-                    //hash2
+                    Console.Clear();
+                    Console.WriteLine("Sie haben HashTabSepCHain in SetUnsorted gewählt!\n");
+                    HashTabSepChain hashChain = new HashTabSepChain();
+                    inputhand.InputHandling(hashChain);
                     break;
                 case 5:
                     return true;

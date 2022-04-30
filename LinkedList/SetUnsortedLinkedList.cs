@@ -6,6 +6,10 @@ namespace AlgoDatPraktikum
 {
     class SetUnsortedLinkedList:MultiSetUnsortedLinkedList
     {
+        public SetUnsortedLinkedList()
+        {
+            Vers = ListPrintVersion.List;
+        }
         public override bool insert(int elem)
         {
             if (!search(elem))

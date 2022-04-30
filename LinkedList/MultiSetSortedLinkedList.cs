@@ -4,9 +4,13 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-    class MultiSetSortedLinkedList : LinkedList
+     class MultiSetSortedLinkedList : LinkedList
     {
         bool found;
+        public MultiSetSortedLinkedList()
+        {
+            Vers = ListPrintVersion.List;
+        }
         protected bool PrivInsert(int elem)
         {
             ListItem nwItem = new ListItem(elem);

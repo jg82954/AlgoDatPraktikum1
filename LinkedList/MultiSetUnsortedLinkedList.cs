@@ -6,6 +6,10 @@ namespace AlgoDatPraktikum
 {
     class MultiSetUnsortedLinkedList : LinkedList
     {
+        public MultiSetUnsortedLinkedList()
+        {
+            Vers = ListPrintVersion.List;
+        }
         public override bool insert(int elem)
         {
             ListItem nwItem = new ListItem(elem);
