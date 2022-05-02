@@ -7,6 +7,7 @@ namespace AlgoDatPraktikum
     abstract class HashVerfahren:IDictionary
     {
         public int arraysize = 11;
+        public int pos;
         public SetUnsortedLinkedList[] elementlist;
         public HashVerfahren()
         {
