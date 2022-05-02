@@ -15,15 +15,22 @@ namespace AlgoDatPraktikum
             {
                 return false;
             }
+            count--;
             return elementlist[pos].delete(elem);
         }
 
         public override bool insert(int elem)
         {
+            if (count==arraysize)
+            {
+                Console.WriteLine("Die Hashtabelle ist voll!");
+                return false;
+            }
             if (search(elem))
             {
                 return false;
             }
+            count++;
             return elementlist[pos].insert(elem);
         }
 
@@ -37,18 +44,33 @@ namespace AlgoDatPraktikum
                 {
                     return false;
                 }
+                if (elementlist[pos].count==0)
+                {
+                    return false;
+                }
+                else if (elementlist[pos].first.key.CompareTo(elem) == 0)
+                {
+                    return true;
+                }
+                pos = GetPositive((HashFunction(elem) - i * i) % arraysize);
                 if (elementlist[pos].count == 0)
                 {
                     return false;
                 }
-                pos = (HashFunction(elem) - i * i) % arraysize;
-                if (elementlist[pos].count == 0)
+                else if (elementlist[pos].first.key.CompareTo(elem) == 0)
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
-        
+        private int GetPositive(int elem)
+        {
+            while (elem<0)
+            {
+                elem += arraysize;
+            }
+            return elem;
+        }
     }
 }

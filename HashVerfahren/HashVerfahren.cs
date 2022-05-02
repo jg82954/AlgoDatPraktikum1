@@ -9,6 +9,7 @@ namespace AlgoDatPraktikum
         public int arraysize = 11;
         public int pos;
         public SetUnsortedLinkedList[] elementlist;
+        public int count { get; set; }
         public HashVerfahren()
         {
             elementlist = new SetUnsortedLinkedList[arraysize];
@@ -16,6 +17,7 @@ namespace AlgoDatPraktikum
             {
                 elementlist[i] = new SetUnsortedLinkedList();
                 elementlist[i].Vers = ListPrintVersion.HashTab;
+                count = 0;
             }
         }
 
