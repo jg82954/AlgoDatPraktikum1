@@ -4,30 +4,28 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-	class SetSortedArray: Array, ISetSorted
-	{
-		public SetSortedArray()
-		{
-
-		}
+    class SetSortedArray : ArraySorted, ISetSorted
+    {
+        public SetSortedArray(params int[] elems)
+        : base(elems) { }
 
         public override bool insert(int elem)
         {
-            bool inserted = false;
+            (bool found, int index) = _search_(elem);
+            if (found) // item bereits in Array
+            {
+                Console.WriteLine("Das Element befindet sich bereits im Array. ");
+                return false;
+            }
+            else // item muss an index Stelle eingefügt werden
+            {
+                for (int i = length; i > index; i--)
+                    data[i] = data[i - 1];
 
-            return inserted;
-        }
-        public override bool delete(int elem)
-        {
-            bool deleted = false;
-
-            return deleted;
-        }
-        public override bool search(int elem)
-        {
-            bool found = false;
-
-            return found;
+                data[index] = elem;
+                length++;
+                return true;
+            }
         }
     }
 }

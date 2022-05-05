@@ -16,7 +16,10 @@ namespace AlgoDatPraktikum
             switch (number)
             {
                 case 1:
-                    //Array
+                    Console.Clear();
+                    Console.WriteLine("Sie haben das Array in SetUnsorted gewählt!\n");
+                    SetUnsortedArray array = new SetUnsortedArray();
+                    inputhand.InputHandling(array);
                     break;
                 case 2:
                     Console.Clear();
