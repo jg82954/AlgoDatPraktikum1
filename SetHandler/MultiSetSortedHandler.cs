@@ -16,7 +16,10 @@ namespace AlgoDatPraktikum
             switch (number)
             {
                 case 1:
-                    //MultiSetSortedArray array= new MultiSetSortedArray
+                    Console.Clear();
+                    Console.WriteLine("Sie haben das Array in MultiSetSorted gewählt!\n");
+                    MultiSetSortedArray array = new MultiSetSortedArray();
+                    inputhand.InputHandling(array);
                     break;
                 case 2:
                     Console.Clear();

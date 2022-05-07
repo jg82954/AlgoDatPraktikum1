@@ -16,10 +16,7 @@ namespace AlgoDatPraktikum
             switch (number)
             {
                 case 1:
-                    Console.Clear();
-                    Console.WriteLine("Sie haben die verkette Liste in SetSorted gewählt!\n");
-                    SetSortedArray array = new SetSortedArray();
-                    inputhand.InputHandling(array);
+                    //Array
                     break;
                 case 2:
                     Console.Clear();

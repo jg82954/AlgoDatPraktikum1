@@ -4,30 +4,15 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-	class MultiSetUnsortedArray: Array, IMultiSetUnsorted
+	class MultiSetUnsortedArray: ArrayUnsorted, IMultiSetUnsorted
 	{
-		public MultiSetUnsortedArray()
-		{
-
-		}
+        public MultiSetUnsortedArray(params int[] elems)
+        : base(elems) { }
 
         public override bool insert(int elem)
         {
-            bool inserted = false;
-
-            return inserted;
-        }
-        public override bool delete(int elem)
-        {
-            bool deleted = false;
-
-            return deleted;
-        }
-        public override bool search(int elem)
-        {
-            bool found = false;
-
-            return found;
+            data[length++] = elem; 
+            return true;
         }
     }
 }

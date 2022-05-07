@@ -8,33 +8,33 @@ namespace AlgoDatPraktikum
 	{
 		public Array(params int[] elems)
 		{
-			length = elems.Length;
+			length = 0;
 			foreach (int item in elems)
 			{
-				insert(item); // noch testen welche isert Methode er hier nimmt
+				//length++;		// length muss hier immer erhöht werden, da sonst binäre Suche nicht funzt
+				insert(item);	// noch testen welche isert Methode er hier nimmt
 			}
 		}
 
-		const int maxlength = 50;
-		int length;
-		int aktpos;
-		int[] data = new int[maxlength];
+		protected const int maxlength = 50;
+		protected int length; // anzahl an Elementen, die aktuell im Array gespeichert sind
+		protected int[] data = new int[maxlength];
 
-		// indexer
+		// (indexer)
 
 		public void print()// ist überall gleich 
 		{
-            for (int i = 0; i < length; i++)
-            {
-                Console.Write(data[i] + " ");
-            }
-		}
+            Console.Write("| ");
+			for (int i = 0; i < length; i++)
+			{
+				Console.Write(data[i] + " | ");
+			}
+            Console.WriteLine(/*"  Länge: " + length*/);
+        }
 		public abstract bool insert(int elem);
 		public abstract bool delete(int elem);
 		public abstract bool search(int elem);
-        //protected int _search_(int elem)
-        //{
-        //    return 3;
-        //}
+
+		protected abstract (bool, int ) _search_(int elem); // wird dann trotz protected das richtige aufgerufen?
     }
 }
