@@ -22,7 +22,7 @@ namespace AlgoDatPraktikum
                 default:
                     Console.Clear();
                     Console.WriteLine("Bitte geben Sie einen gültigen Buchstaben ein\n");
-                    RestartHandling();
+                    restart= RestartHandling();
                     break;
             }
             return restart;
