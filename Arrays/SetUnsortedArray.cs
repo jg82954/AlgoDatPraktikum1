@@ -4,30 +4,24 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-	class SetUnsortedArray: Array, ISetUnsorted
+	class SetUnsortedArray: ArrayUnsorted, ISetUnsorted
 	{
-		public SetUnsortedArray()
-		{
+		public SetUnsortedArray(params int[] elems)
+        : base(elems) { }
 
-		}
-
-		public override bool insert(int elem)
+        public override bool insert(int elem)
         {
-			bool inserted = false;
-
-			return inserted;
-        }
-		public override bool delete(int elem)
-        {
-            bool deleted = false;
-
-            return deleted;
-        }
-        public override bool search(int elem)
-        {
-            bool found = false;
-
-            return found;
+            (bool found, int index) = _search_(elem);
+            if (found) // falls elem schon in Array
+            {
+                Console.WriteLine("Element ist bereits im Array. ");
+                return false;
+            }
+            else
+            {
+                data[length++] = elem;
+                return true;
+            }
         }
     }
 }
