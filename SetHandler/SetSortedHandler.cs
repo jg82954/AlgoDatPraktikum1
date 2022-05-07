@@ -28,7 +28,10 @@ namespace AlgoDatPraktikum
                     inputhand.InputHandling(list);
                     break;
                 case 3:
-                    //BinTree
+                    Console.Clear();
+                    Console.WriteLine("Sie haben den binären Baum gewählt!\n");
+                    BinSearchTree binsearchTree = new BinSearchTree();
+                    inputhand.InputHandling(binsearchTree);
                     break;
                 case 4:
                     //treap
