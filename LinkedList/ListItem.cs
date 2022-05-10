@@ -6,7 +6,7 @@ namespace AlgoDatPraktikum
 {
     public class ListItem
     {
-        public int key;
+        public int key; //integer Schluesselwert des Items
         public ListItem next = null, prev = null;
         public ListItem(int _key) 
         {

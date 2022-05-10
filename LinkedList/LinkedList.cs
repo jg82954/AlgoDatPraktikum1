@@ -4,25 +4,25 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-    public enum ListPrintVersion { List,HashTab}
+    public enum ListPrintVersion { List,Hash}   //Unterscheidung fuer die Printfunktion zwischen Hashverfahren und Listen
     public abstract class LinkedList:IDictionary
     {
-        public ListItem first = null, last = null,pos=null;
-        public int count { get;  set; }
+        public ListItem first = null, last = null,pos=null; //Zeigervariable pos
+        public int count { get;  set; } //Zaehlt die Anzahl an Elementen in der Liste
         public ListPrintVersion Vers { get; set; }
 
         public bool delete(int elem)
         {
             if (search(elem))
             {
-                //Falls 2: Das gesuchte ELement ist das Erste
-                if (pos==first)
-                    return DeleteFirst();
-                //Fall 3: Das gesuchte Element befindet sich am Ende
-                else if (pos==last)
+                if (first == null)  //1.Fall: die Liste ist leer
+                    return false;
+                if (pos==first)  //Falls 2: Das gesuchte ELement ist das Erste
+                    return DeleteFirst();     
+                else if (pos==last) //Fall 3: Das gesuchte Element befindet sich am Ende
                     return DeleteLast();
-                //Fall 4: Das gesuchte Element ist mittendrin
-                else
+
+                else  //Fall 4: Das gesuchte Element ist mittendrin
                 {
                     pos.prev.next = pos.next;
                     pos.next.prev = pos.prev;
@@ -35,14 +35,14 @@ namespace AlgoDatPraktikum
         }
         private bool DeleteFirst()
         {
-            //Falls 2: Liste besteht aus einem Element
-            if (first == last)
+            
+            if (first == last)  //Falls 1: Liste besteht aus einem Element
             {
                 first = last = null;
             }
-                
-            //Fall 3: Liste hat mehr als ein Element
-            else
+
+
+            else  //Fall 2: Liste hat mehr als ein Element
             {
                 first = first.next;
                 first.prev = null;
@@ -53,9 +53,9 @@ namespace AlgoDatPraktikum
 
         private bool DeleteLast()
         {
-            if (first == last)
+            if (first == last) //Falls 1: Liste besteht aus einem Element
                 first = last = null;
-            else
+            else //Fall 2: Liste hat mehr als ein Element
             {
                 last = last.prev;
                 last.next = null;
@@ -67,13 +67,13 @@ namespace AlgoDatPraktikum
 
         public void print()
         {
-            if (first==null)
+            if (first==null)    //1.Fall: die Liste ist leer
             {
                 Console.WriteLine("Ihre Liste ist leer!");
             }
             else
             {
-                if (Vers==ListPrintVersion.List)
+                if (Vers==ListPrintVersion.List)    //Die Methode wird von einer Listenklasse aufgerufen
                 {
                     for (ListItem item = first; item != null; item = item.next)
                     {
@@ -83,7 +83,7 @@ namespace AlgoDatPraktikum
                     Console.WriteLine($"Anzahl an Elementen: {count}");
                     Console.WriteLine("------");
                 }
-                else
+                else //Die Methode wird von einer Hashklasse aufgerufen
                 {
                     for (ListItem item = first; item != null; item = item.next)
                     {
@@ -100,36 +100,6 @@ namespace AlgoDatPraktikum
         }
 
         public abstract bool search(int elem);
-        //public override bool search(int elem)
-        //{
-        //    pos = null;
-        //    ListItem item = first;
-        //    if (first == null)
-        //        return false;
-        //    while (item.next != null && item.key.CompareTo(elem) < 0)
-        //    {
-        //        item = item.next;
-        //        pos = item;
-        //        
-        //    }
-        //    if (item.key.CompareTo(elem) == 0)
-        //    {
-        //        return true;
-        //    }
-        //    else if (item.key.CompareTo(elem) > 0)
-        //    {
-        //        return false;
-        //    }
-        //    else if (item.next == null)
-        //    {
-        //        if (item.key.CompareTo(elem) < 0)
-        //        {
-        //            pos = null;
-        //        }
-        //        return false;
-        //    }
-        //    return false;
-        //}
-
+        
     }
 }

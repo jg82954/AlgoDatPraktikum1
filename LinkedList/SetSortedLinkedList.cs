@@ -12,7 +12,7 @@ namespace AlgoDatPraktikum
         }
         public override bool insert(int elem)
         {
-            if (!search(elem))
+            if (!search(elem))  //Wenn das Element nicht gefunden wurde wird das Element eingfuegt
             {
                 return base.PrivInsert(elem);
             }
