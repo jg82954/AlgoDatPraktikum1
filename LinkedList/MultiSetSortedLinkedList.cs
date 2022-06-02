@@ -4,21 +4,25 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-    class MultiSetSortedLinkedList : LinkedList
+     class MultiSetSortedLinkedList : LinkedList
     {
-        bool found;
+        private bool found;
+        public MultiSetSortedLinkedList()
+        {
+            Vers = ListPrintVersion.List;
+        }
         protected bool PrivInsert(int elem)
         {
             ListItem nwItem = new ListItem(elem);
-            if (first == null)
+            if (first == null)  //1.Fall: Die Liste ist leer
             {
                 first = last = nwItem;
                 count++;
                 return true;
             }
-            if (found)
+            if (found)  //Das Element wurde gefunden
             {
-                if (pos==last)
+                if (pos==last)  //Die einzufuegende Stelle ist die Letzte
                 {
                     nwItem.prev = last;
                     last.next = nwItem;
@@ -26,7 +30,7 @@ namespace AlgoDatPraktikum
                     count++;
                     return true;
                 }
-                else
+                else  //Die einzufuegende Stelle ist mittendrin
                 {
                     pos.next.prev = nwItem;
                     nwItem.prev = pos;
@@ -36,9 +40,9 @@ namespace AlgoDatPraktikum
                     return true;
                 }
             }
-            else
+            else   //Das Element wurde nicht gefunden
             {
-                if (pos==null)
+                if (pos==null)  //Das ELement muss vor das Letzte eingefuegt werden
                 {
                     nwItem.prev = last;
                     last.next = nwItem;
@@ -46,7 +50,7 @@ namespace AlgoDatPraktikum
                     count++;
                     return true;
                 }
-                else if (pos==first)
+                else if (pos==first)    //Das Element muss als Erstes eingefuegt werden
                 {
                     nwItem.next = pos;
                     pos.prev = nwItem;
@@ -54,7 +58,7 @@ namespace AlgoDatPraktikum
                     count++;
                     return true;
                 }
-                else
+                else //Das Element muss vor die Stelle pos eingefuegt werden
                 {
                     pos.prev.next = nwItem;
                     nwItem.prev = pos.prev;
@@ -73,24 +77,23 @@ namespace AlgoDatPraktikum
         public override bool search(int elem)
         {
             pos = first;
-            //ListItem item = first;
-            if (first == null)
+            if (first == null)  //1.Fall: die Liste ist leer
                 return false;
             while (pos.next != null && pos.key.CompareTo(elem) != 0)
             {
-                if (pos.key.CompareTo(elem) > 0)
+                if (pos.key.CompareTo(elem) > 0)    //Das aktuelle Element pos ist schon groesser als das zu suchende Element
                 {
                     return false;
                 }
                 pos = pos.next;
             }
-            if (pos.key.CompareTo(elem) == 0)
+            if (pos.key.CompareTo(elem) == 0)   //1. Fall nach der Schleife: Das gesuchte ELement wurde gefunden
             {
                 return true;
             }
-            else
+            else //2. Fall: Das Ende der Liste wurde erreicht
             {
-                if (pos.key.CompareTo(elem) < 0)
+                if (pos.key.CompareTo(elem) < 0)    //Das Element ist kleiner als das Letzte
                 {
                     pos = null;
                 }

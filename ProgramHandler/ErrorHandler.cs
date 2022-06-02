@@ -8,17 +8,18 @@ namespace AlgoDatPraktikum
     {
         public int ErrorHandling(string s)
         {
+            int number=-1;
             try
             {
-                int number = Convert.ToInt32(s);
+                number = Convert.ToInt32(s);
                 return number;
             }
             catch (Exception)
             {
                 Console.WriteLine("\nIhre Eingabe ist ungültig!\nGeben sie erneut eine gültige Zahl ein");
-                ErrorHandling(Console.ReadLine());
+                number=ErrorHandling(Console.ReadLine());
             }
-            return -1;
+            return number;
         }
     }
 }

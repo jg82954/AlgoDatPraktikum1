@@ -39,7 +39,7 @@ namespace AlgoDatPraktikum
                         jumpback = true;
                         break;
                     default:
-                        Console.WriteLine("Bitte geben Sie eine Zahl zwischen 1 und 4 ein!\n");
+                        Console.WriteLine("Bitte geben Sie eine Zahl zwischen 1 und 5 ein!\n");
                         SelectionHandler();
                         break;
                 }
