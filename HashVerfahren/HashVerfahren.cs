@@ -7,9 +7,9 @@ namespace AlgoDatPraktikum
     abstract class HashVerfahren:IDictionary
     {
         public int arraysize = 11;  //feste Arraygroesse
-        public int pos; //lokale Zeigervariable
-        public SetUnsortedLinkedList[] elementlist; //Alle Eintraege der Hashtabelle sind Elemente von SetUnsortedLinkedList
-        public int count { get; set; }  //Zaehler fuer die Anzahl an Eintraegen in der Tabelle
+        protected int pos; //lokale Zeigervariable
+        protected SetUnsortedLinkedList[] elementlist; //Alle Eintraege der Hashtabelle sind Elemente von SetUnsortedLinkedList
+        protected int count { get; set; }  //Zaehler fuer die Anzahl an Eintraegen in der Tabelle
         public HashVerfahren()
         {
             elementlist = new SetUnsortedLinkedList[arraysize]; //Die Hashtabelle wird erzeugt
@@ -44,7 +44,7 @@ namespace AlgoDatPraktikum
 
         public abstract bool search(int elem);  //Jede Unterklasse muss die search-Funktion überschreiben
 
-        public int HashFunction(int key)    //Modulo-Hashfunktion
+        protected int HashFunction(int key)    //Modulo-Hashfunktion
         {
             return key % arraysize;
         }

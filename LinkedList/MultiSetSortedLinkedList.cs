@@ -6,7 +6,7 @@ namespace AlgoDatPraktikum
 {
      class MultiSetSortedLinkedList : LinkedList
     {
-        bool found;
+        private bool found;
         public MultiSetSortedLinkedList()
         {
             Vers = ListPrintVersion.List;
