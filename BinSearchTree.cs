@@ -33,6 +33,7 @@ namespace AlgoDatPraktikum
         TreeItem searchResult = null; //gesuchtes TreeItem aus Search-Fktn
         bool pointerIsLeftChild = false;
 
+
         public bool insert(int _value)
         {
             bool done = false;
@@ -61,7 +62,7 @@ namespace AlgoDatPraktikum
 
                 done = true;
                 newItem.parent = parentPointer;
-                HeigthChange(newItem);
+                //HeigthChange(newItem);
             }
             return done;
         }
@@ -109,24 +110,38 @@ namespace AlgoDatPraktikum
             return found;
         }
 
-        public void HeigthChange(TreeItem item)
-        {
+        //public void HeigthChange(TreeItem item)
+        //{
             
-            if (item != root)
+        //    if (item != root)
+        //    {
+        //        if (item == item.parent.left) //item ist linkes Kind
+        //        {
+        //            item.parent.h_left += 1;
+        //        }
+
+        //        else                         //item ist rechtes Kind
+        //        {
+        //            item.parent.h_right += 1;
+        //        }
+
+        //        HeigthChange(item.parent);
+        //    }
+        //}
+
+        protected void calcHeights()
+        {
+            calcHeight(root);
+
+            void calcHeight(TreeItem item)
             {
-                if (item == item.parent.left) //item ist linkes Kind
+                if (item.left != null)
                 {
-                    item.parent.h_left += 1;
+                    //Hier fertigstellen
                 }
-
-                else                         //item ist rechtes Kind
-                {
-                    item.parent.h_right += 1;
-                }
-
-                HeigthChange(item.parent);
             }
         }
+
 
         public void print()
         {
@@ -206,21 +221,16 @@ namespace AlgoDatPraktikum
                     while (symm.right != null)
                         symm = symm.right;
 
-                    //TreeItem symmParent = symm.parent;
-
-
-
-
                     if (symm != itemToDelete.left) //Fall 4.1: symm ist nicht direkter linker Nachfolger von itemToDelete
                     {
-                        symm.parent.right = symm.left;
-                        symm.left.parent = symm.parent;
+                        //==> linkes Kind von symm wird symms parent geknüpft (beidseitig))
+                        symm.parent.right = symm.left; 
+
+                        if(symm.left != null)
+                            symm.left.parent = symm.parent;
                     }
 
                     ErsetzeZuLoeschendenKnoten(itemToDelete, symm);
-
-
-
                 }
                 return itemToDelete;
             }
@@ -229,24 +239,35 @@ namespace AlgoDatPraktikum
         public void ErsetzeZuLoeschendenKnoten(TreeItem itemToDelete, TreeItem ersatz)
         {
             if (itemToDelete == root)
+            {
                 root = ersatz;
+            }
 
-            else if (pointerIsLeftChild) //Fall 1: itemToDelete ist linkes Kind
+            else if (itemToDelete.parent.left == itemToDelete) //Fall 1: itemToDelete ist linkes Kind
             {
                 itemToDelete.parent.left = ersatz;
-                ersatz.parent = itemToDelete.parent;
-
             }
             else //Fall 2: itemToDelete ist rechtes Kind
             {
                 itemToDelete.parent.right = ersatz;
-                ersatz.parent = itemToDelete.parent;
             }
-        }
 
-        public int BerechneKnotenhoehe(TreeItem item)
-        {
-            return 0;
+
+            if (ersatz != null)
+            {
+                if (itemToDelete != root)
+                    ersatz.parent = itemToDelete.parent;
+                else
+                    ersatz.parent = null;
+
+
+
+                if (itemToDelete.left != ersatz) //ersatz ist direkter linker Nachfolger von ItemToDelete -> soll nicht auf sich selbst verweisen
+                    ersatz.left = itemToDelete.left;
+
+                if(itemToDelete.right != ersatz)
+                    ersatz.right = itemToDelete.right;
+            }
         }
     }
 }
