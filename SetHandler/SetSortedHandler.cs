@@ -34,7 +34,10 @@ namespace AlgoDatPraktikum
                     inputhand.InputHandling(binsearchTree);
                     break;
                 case 4:
-                    //treap
+                    Console.Clear();
+                    Console.WriteLine("Sie haben den Treap gewählt!\n");
+                    Treap treap = new Treap();
+                    inputhand.InputHandling(treap);
                     break;
                 case 5:
                     //avlbaum

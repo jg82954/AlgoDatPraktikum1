@@ -28,16 +28,15 @@ namespace AlgoDatPraktikum
             }
         }
 
-        TreeItem root = null;
-        TreeItem parentPointer = null; //Zeiger auf den parent des hinzuzufügenden Blattes aus Search-Fktn
-        TreeItem searchResult = null; //gesuchtes TreeItem aus Search-Fktn
-        bool pointerIsLeftChild = false;
+        protected TreeItem root = null;
+        protected TreeItem parentPointer = null; //Zeiger auf den parent des hinzuzufügenden Blattes aus Search-Fktn
+        protected TreeItem searchResult = null; //gesuchtes TreeItem aus Search-Fktn
+        protected bool pointerIsLeftChild = false;
 
-
-        public bool insert(int _value)
+        protected bool binInsert(ref TreeItem newItem)
         {
             bool done = false;
-            TreeItem newItem = new TreeItem(_value);
+            
 
             if (root == null)
             {
@@ -45,7 +44,7 @@ namespace AlgoDatPraktikum
                 done = true;
             }
 
-            else if (search(_value))    //Dieses Element ist bereits im Baum
+            else if (search(newItem.value))    //Dieses Element ist bereits im Baum
                 Console.WriteLine("Element bereits im Baum enthalten!\n");
 
             else                    //Element kommt noch nicht vor -> soll tatsächlich eingefügt werden
@@ -66,8 +65,13 @@ namespace AlgoDatPraktikum
             }
             return done;
         }
+        public virtual bool insert(int _value)
+        {
+            TreeItem newItem = new TreeItem(_value);
+            return binInsert(ref newItem);
+        }
 
-        public bool search(int _value)
+        public virtual bool search(int _value)
         {
             TreeItem current_item = root;
             bool found = false;
@@ -143,12 +147,12 @@ namespace AlgoDatPraktikum
         }
 
 
-        public void print()
+        public virtual void print()
         {
             nodePrint(root, 0, "nicht definiert");
         }
 
-        private void nodePrint(TreeItem node, int level, string richtung)
+        protected void nodePrint(TreeItem node, int level, string richtung)
         {
             if (node != null)
             {
