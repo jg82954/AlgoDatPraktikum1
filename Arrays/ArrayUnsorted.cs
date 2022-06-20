@@ -6,40 +6,42 @@ namespace AlgoDatPraktikum
 {
     abstract class ArrayUnsorted : Array
     {
-        public ArrayUnsorted(params int[] elems)
-        : base(elems) { }
+        public ArrayUnsorted()
+        : base() { }
 
         public override bool delete(int elem)
         {
             (bool found, int index) = _search_(elem);
-            if (found)
+            if (found)  // 'elem' in Array
             {
-                data[index] = data[length];     // letzten in Lücke speicher
-                data[length--] = -1;            // negative zahlen sind nicht erlaubt :)
-                                                // aber geht das mit length-- richtig?
+                data[index] = data[length--];     // letzten Element in Array in die entstandene Lücke speichern
+                                                  // das letzte Element steht jetzt zwar doppelt im Array (an 'data[index]' und an 'data[length]'
+                                                  // das ist aber nicht weiter schlimm, 'data[length]' nicht im eigentlichen Array ist, da die
+                                                  // gültigen Indizes nur bis 'length-1' gehen
                 return true;
             }
-            else
-            {
-                Console.WriteLine("Item nicht im Array vorhanden. ");
+            else    // 'elem' nicht in Array
                 return false;
-            }
-        } 
-        public override bool search(int elem)
-        {
-            (bool found, int index) = _search_(elem);
-            return found;
-        } 
+        }
 
-        protected override (bool, int) _search_(int elem)  // bei true -> Item ist gefunden und befindet sich an index [int]
-                                                           // bei false -> Item ist NICHT in Array, [int] ist Ort wo einzufügen (einfach length)
+        /// <summary>
+        /// zusätzliche Such-Methode, die als Rückgabewert zusätzlich noch den Index enthält,
+        /// an dem sich das gefundene Element befindet (wenn das Element im Array ist),
+        /// bzw. an dem das einzufügende Element eingefügt werden muss (wenn das Element nicht im Array ist)
+        /// </summary>
+        /// <param name="elem"></param>
+        /// <returns>
+        /// Rueckgabewert-true  bedeutet gefunden        -> Rueckgabe-int ist Stelle, wo 'elem' sich befindet
+        /// Rueckgabewert-false bedeutet nicht vorhanden -> Rueckgabe-int ist Stelle, wo 'elem' hin muss
+        /// </returns>
+        protected override (bool, int) _search_(int elem) 
         {
-            for (int i = 0; i < length; i++)
+            // sequienzielle Suche:
+            for (int i = 0; i < length; i++) 
                 if (data[i] == elem)
                     return (true, i);
 
-            // ab hier ist elem NICHT in Array
-
+            // ab hier ist elem nicht in Array
             return (false, length);
         } 
     }
