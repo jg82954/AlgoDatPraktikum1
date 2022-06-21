@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-     class MultiSetSortedLinkedList : LinkedList
+     class MultiSetSortedLinkedList : LinkedList,IMultiSetSorted
     {
         private bool found;
         public MultiSetSortedLinkedList()

@@ -9,7 +9,7 @@ namespace AlgoDatPraktikum
         public bool RestartHandling()
         {
             bool restart = true;
-            Console.WriteLine("DJ Khaled: Another one? j/n");
+            Console.WriteLine("Noch eine Runde? j/n");
             string s = Console.ReadLine();
             switch (s)
             {

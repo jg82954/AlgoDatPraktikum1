@@ -39,8 +39,9 @@ namespace AlgoDatPraktikum
                 else
                     par = parent.value;
 
+                return $"val: {value}, p: {priority}";
 
-                return $"val: {value}, p: {priority}, l: {links}, r: {rechts} par: {par}";
+                //return $"val: {value}, p: {priority}, l: {links}, r: {rechts} par: {par}";
             }
 
         }
@@ -50,7 +51,7 @@ namespace AlgoDatPraktikum
             bool done = false;
             TreeItem newItem = new TreapItem(_value);
 
-            if (binInsert(ref newItem))
+            if (_Insert(ref newItem))
             {
                 //Sortieren für Prio
                 while (newItem != root && (newItem as TreapItem).priority <= (newItem.parent as TreapItem).priority)

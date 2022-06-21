@@ -24,7 +24,8 @@ namespace AlgoDatPraktikum
 
             public override string ToString()
             {
-                return $"{value} l:{h_left} r:{h_right}";
+                return $"{value}";
+                //return $"{value} l:{h_left} r:{h_right}";
             }
         }
 
@@ -33,7 +34,7 @@ namespace AlgoDatPraktikum
         protected TreeItem searchResult = null; //gesuchtes TreeItem aus Search-Fktn
         protected bool pointerIsLeftChild = false;
 
-        protected bool binInsert(ref TreeItem newItem)
+        protected bool _Insert(ref TreeItem newItem)
         {
             bool done = false;
             
@@ -68,7 +69,7 @@ namespace AlgoDatPraktikum
         public virtual bool insert(int _value)
         {
             TreeItem newItem = new TreeItem(_value);
-            return binInsert(ref newItem);
+            return _Insert(ref newItem);
         }
 
         public virtual bool search(int _value)
@@ -76,7 +77,10 @@ namespace AlgoDatPraktikum
             TreeItem current_item = root;
             bool found = false;
             bool treeCompleted = false;
-
+            if (root==null)
+            {
+                return false;
+            }
             do
             {
                 if (_value == current_item.value)       //currentItem hat die gesuchte Value
@@ -133,18 +137,18 @@ namespace AlgoDatPraktikum
         //    }
         //}
 
-        protected void calcHeights()
-        {
-            calcHeight(root);
+        //protected void calcHeights()
+        //{
+        //    calcHeight(root);
 
-            void calcHeight(TreeItem item)
-            {
-                if (item.left != null)
-                {
-                    //Hier fertigstellen
-                }
-            }
-        }
+        //    void calcHeight(TreeItem item)
+        //    {
+        //        if (item.left != null)
+        //        {
+        //            //Hier fertigstellen
+        //        }
+        //    }
+        //}
 
 
         public virtual void print()

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace AlgoDatPraktikum
 {
-    class MultiSetUnsortedLinkedList : LinkedList
+    class MultiSetUnsortedLinkedList : LinkedList,IMultiSetUnsorted
     {
         public MultiSetUnsortedLinkedList()
         {

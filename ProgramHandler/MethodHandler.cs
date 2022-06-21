@@ -34,8 +34,8 @@ namespace AlgoDatPraktikum
                             Console.WriteLine($"Das Element {input[1]} konnte nicht gefunden werden\n");
                         break;
                     case "insert":
-                        Console.Clear();
                         done = element.insert(errorhand.ErrorHandling(input[1]));
+                        Console.Clear();
                         if (done)
                             Console.WriteLine($"Das Element {input[1]} wurde erfolgreich eingefügt\n");
                         else
@@ -50,8 +50,8 @@ namespace AlgoDatPraktikum
                         Console.Clear();
                         break;
                     default:
-                        Console.Clear();
                         Console.WriteLine("Bitte geben Sie eine gültige Methode ein\n");
+                        Console.Clear();
                         break;
                 }
             }

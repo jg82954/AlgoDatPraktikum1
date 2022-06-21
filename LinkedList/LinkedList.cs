@@ -7,6 +7,19 @@ namespace AlgoDatPraktikum
     public enum ListPrintVersion { List,Hash}   //Unterscheidung fuer die Printfunktion zwischen Hashverfahren und Listen
     public abstract class LinkedList:IDictionary
     {
+        public class ListItem
+        {
+            public int key; //integer Schluesselwert des Items
+            public ListItem next = null, prev = null;
+            public ListItem(int _key)
+            {
+                key = _key;
+            }
+            public override string ToString()
+            {
+                return $"Name: {key}, prev: {(prev == null ? 0 : prev.key)}, next: {(next == null ? 0 : next.key)}";
+            }
+        }
         public ListItem first = null, last = null,pos=null; //Zeigervariable pos
         public int count { get;  set; } //Zaehlt die Anzahl an Elementen in der Liste
         public ListPrintVersion Vers { get; set; }

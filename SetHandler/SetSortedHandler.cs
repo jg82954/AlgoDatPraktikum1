@@ -40,7 +40,10 @@ namespace AlgoDatPraktikum
                     inputhand.InputHandling(treap);
                     break;
                 case 5:
-                    //avlbaum
+                    Console.Clear();
+                    Console.WriteLine("Sie haben den AVL_Baum gewählt!\n");
+                    AVL avltree = new AVL();
+                    inputhand.InputHandling(avltree);
                     break;
                 case 6:
                     return true;

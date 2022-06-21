@@ -12,6 +12,10 @@ namespace AlgoDatPraktikum
             try
             {
                 number = Convert.ToInt32(s);
+                if (number<0)
+                {
+                    throw new Exception();
+                }
                 return number;
             }
             catch (Exception)
